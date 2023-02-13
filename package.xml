@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>cube-pose-estimation-aruco-ros</name>
+  <version>1.0.0</version>
+  <description>Aruco cube pose estimation</description>
+
+  <author>Davide Nardi</author>
+
+    <maintainer email="davide.nardi-1@studenti.unitn.it">hydran</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <license>BSD</license>
+
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+  </export>
+
+</package>
