@@ -8,7 +8,7 @@ import tf
 from std_msgs.msg import Header
 from geometry_msgs.msg import PoseStamped
 
-SHOW_IMG = True
+SHOW_IMG = False
 
 # Camea offsets
 Z_OFFSET_CAMERA=0.96
@@ -153,7 +153,7 @@ def main():
     zed = sl.Camera()
     # Set configuration parameters
     init_params = sl.InitParameters()
-    init_params.camera_resolution = sl.RESOLUTION.HD720
+    init_params.camera_resolution = sl.RESOLUTION.HD1080
     init_params.camera_fps = 30
     init_params.depth_minimum_distance = 0.3
     init_params.depth_maximum_distance = 3
@@ -176,7 +176,7 @@ def main():
     # Camera calibration parameters
     intrinsic_camera = np.array([[fx, 0, cx], [0, fy, cy], [0, 0, 1]])
     distortion = np.array([k1, k2, p1, p2, k3])
-
+    rate = rospy.Rate(24)
     while not rospy.is_shutdown():
 
         if zed.grab(runtime_parameters) == sl.ERROR_CODE.SUCCESS:
@@ -224,7 +224,7 @@ def main():
 
             # Publish ROS message
             pub.publish(cube_pos)
-            
+            rate.sleep()
 
 if __name__ == "__main__":
     main()
